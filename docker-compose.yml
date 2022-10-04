@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  cockroach:
+    image: cockroachdb/cockroach:v22.1.7
+    restart: always
+    command: start-single-node --insecure
+    ports:
+      - "26257:26257"
+
+  postgres:
+    image: postgres:14.5
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:22.9.2.7
+    restart: always
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ./config.xml:/etc/clickhouse-server/config.xml:ro
+
+  clickhouse-jdbc-bridge:
+    image: clickhouse/jdbc-bridge:2.1.0
+    restart: always
+    ports:
+      - "9019:9091"
