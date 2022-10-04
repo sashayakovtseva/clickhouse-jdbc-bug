@@ -1,0 +1,17 @@
+{
+  "cockroach": {
+    "converter": {
+      "mappings": [
+        {
+          "nativeType": "UUID",
+          "toType": "UUID"
+        }
+      ]
+    },
+    "driverClassName": "org.postgresql.Driver",
+    "jdbcUrl": "jdbc:postgresql://cockroach:26257/defaultdb",
+    "username": "root",
+    "password": "",
+    "maximumPoolSize": 10
+  }
+}

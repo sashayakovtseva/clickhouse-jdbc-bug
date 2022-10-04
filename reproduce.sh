@@ -21,13 +21,13 @@ docker compose exec -T clickhouse clickhouse client --query="SELECT * from test.
 echo "\r==========FINISH TEST POSTGRES UUID TO CLICKHOUSE STRING"
 
 echo "\n==========TEST COCKROACHDB UUID TO CLICKHOUSE UUID"
-echo "CREATE TABLE IF NOT EXISTS cockroach_test_uuid_to_uuid (uuid UUID) ENGINE = JDBC('jdbc:postgresql://cockroach:26257/defaultdb', 'public', 'test');" | \
+echo "CREATE TABLE IF NOT EXISTS cockroach_test_uuid_to_uuid (uuid UUID) ENGINE = JDBC('cockroach', 'public', 'test');" | \
 docker compose exec -T clickhouse clickhouse client
 docker compose exec -T clickhouse clickhouse client --query="SELECT * from test.cockroach_test_uuid_to_uuid"
 echo "\r==========FINISH TEST COCKROACHDB UUID TO CLICKHOUSE UUID"
 
 echo "\n==========TEST COCKROACHDB UUID TO CLICKHOUSE STRING"
-echo "CREATE TABLE IF NOT EXISTS cockroach_test_uuid_to_string (uuid String) ENGINE = JDBC('jdbc:postgresql://cockroach:26257/defaultdb', 'public', 'test');" | \
+echo "CREATE TABLE IF NOT EXISTS cockroach_test_uuid_to_string (uuid String) ENGINE = JDBC('cockroach', 'public', 'test');" | \
 docker compose exec -T clickhouse clickhouse client
 docker compose exec -T clickhouse clickhouse client --query="SELECT * from test.cockroach_test_uuid_to_string"
 echo "\r==========FINISH TEST COCKROACHDB UUID TO CLICKHOUSE STRING"

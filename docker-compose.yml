@@ -28,5 +28,7 @@ services:
   clickhouse-jdbc-bridge:
     image: clickhouse/jdbc-bridge:2.1.0
     restart: always
+    volumes:
+      - ./datasources:/app/config/datasources
     ports:
       - "9019:9091"
